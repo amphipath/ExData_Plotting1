@@ -6,9 +6,7 @@ y <- as.numeric(levels(y))[y]
 time <- as.character(test$V2)
 day <- as.character(test$V1)
 
-packages.install("chron")
-library(chron)
-datetime <- chron(dates = day, time, format = c(dates = "d/m/y", times = "h:m:s"))
+datetime <- strptime(paste(day,time), "%d/%m/%Y %H:%M:%S")
 
 png("plot2.png")
 plot(y, x = datetime, type = "l", ylab = "Global Active Power (kilowatts)")

@@ -4,9 +4,7 @@ test <- test[test[,1] == "1/2/2007" | test[,1] == "2/2/2007",]
 time <- as.character(test$V2)
 day <- as.character(test$V1)
 
-packages.install("chron")
-library(chron)
-datetime <- chron(dates = day, time, format = c(dates = "d/m/y", times = "h:m:s"))
+datetime <- strptime(paste(day,time), "%d/%m/%Y %H:%M:%S")
 
 y1 <- test$V7
 y1 <- as.numeric(levels(y1))[y1]
